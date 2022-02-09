@@ -24,14 +24,15 @@ Module.register("MMM-Pregnancy", {
   },
 
   getStyles: function() {
-    return ["MMM-Pregnancy.css", "w3.css"];
+    return ["MMM-Pregnancy.css", "font-awesome.css"];
   },
 
   getTranslations: function() {
     return {
       en: "translations/en.json",
       es: "translations/es.json",
-      sv: "translations/sv.json"
+      sv: "translations/sv.json",
+	  de: "translations/de.json",
     }
   },
 
@@ -150,42 +151,40 @@ Module.register("MMM-Pregnancy", {
     yearBarCell.style = "width: 100%;";
 
     var firstTrimesterContainer = document.createElement("div");
-    firstTrimesterContainer.className = "w3-white";
-    firstTrimesterContainer.style = "float: left; width: 32%; margin-right:2px";
+    firstTrimesterContainer.style = "float: left; width: 32%; margin-right:2px; background-color: #444444;";
+	
     var firstTrimesterProgress = document.createElement("div");
     firstTrimesterContainer.appendChild(firstTrimesterProgress);
-    firstTrimesterProgress.className = "w3-pink";
+	
     var firstTrimesterText = document.createElement("span");
     firstTrimesterText.innerHTML = this.translate('1st');
     firstTrimesterText.style = 'font-size: 25px;color: #ee5486';
     firstTrimesterProgress.appendChild(firstTrimesterText);
-    firstTrimesterProgress.style = "height:24px;width:" + t1Bar + "%";
+    firstTrimesterProgress.style = "height:24px;background-color:#FFFFFF;width:" + t1Bar + "%";
 
     var secondTrimesterContainer = document.createElement("div");
-    secondTrimesterContainer.className = "w3-light-grey";
-    secondTrimesterContainer.style = "float: left; width: 32%; margin-right:2px";
+    secondTrimesterContainer.style = "float: left; width: 32%; margin-right:2px; background-color: #444444;";
     
     var secondTrimesterProgress = document.createElement("div");
     secondTrimesterContainer.appendChild(secondTrimesterProgress);
-    secondTrimesterProgress.className = "w3-pink";
+
     var secondTrimesterText = document.createElement("span");
     secondTrimesterText.style = 'font-size: 25px;color: #ee5486';
     secondTrimesterText.innerHTML = this.translate('2nd');
     secondTrimesterProgress.appendChild(secondTrimesterText);
-    secondTrimesterProgress.style = "height:24px;width:" + t2Bar + "%";
+    secondTrimesterProgress.style = "height:24px;background-color:#FFFFFF;width:" + t2Bar + "%";
 
     var thirdTrimesterContainer = document.createElement("div");
-    thirdTrimesterContainer.className = "w3-light-grey";
-    thirdTrimesterContainer.style = "float: left; width: 32%; margin-right:2px";
+    thirdTrimesterContainer.style = "float: left; width: 32%; margin-right:2px; background-color: #444444;";
     
     var thirdTrimesterProgress = document.createElement("div");
     thirdTrimesterContainer.appendChild(thirdTrimesterProgress);
-    thirdTrimesterProgress.className = "w3-pink";
+
     var thirdTrimesterText = document.createElement("span");
     thirdTrimesterText.innerHTML = this.translate('3rd');
     thirdTrimesterText.style = 'font-size: 25px;color: #ee5486';
     thirdTrimesterProgress.appendChild(thirdTrimesterText);
-    thirdTrimesterProgress.style = "height:24px;width:"+ t3Bar + "%";
+    thirdTrimesterProgress.style = "height:24px;background-color:#FFFFFF;width:"+ t3Bar + "%";
 
     yearBarCell.appendChild(firstTrimesterContainer);
     yearBarCell.appendChild(secondTrimesterContainer);
@@ -234,14 +233,16 @@ Module.register("MMM-Pregnancy", {
     menstrualinput = new Date(this.config.date);
     menstrual.setTime(menstrualinput.getTime());
 
-    ovulation.setTime(menstrual.getTime() + (cycle*86400000) - (luteal*86400000));
+    ovulation.setTime(menstrual.getTime() + (cycle*86400000) - (luteal*86400000));	
+	
     var conception = this.dispDate(ovulation);
     this.pregnancyResults.conception = conception;
 
     duedate.setTime(ovulation.getTime() + 266*86400000);
+	
     this.pregnancyResults.duedate = this.dispDate(duedate);
 
-    var fetalage = 14 + 266 - ((duedate - today) / 86400000);
+    var fetalage = 13 + 266 - ((duedate - today) / 86400000);
     weeks = parseInt(fetalage / 7);
     days = Math.ceil(fetalage % 7);
 
@@ -262,7 +263,7 @@ Module.register("MMM-Pregnancy", {
     if (year < 2000) year += 1900;
     
     if (this.config.USDateFormat) return (month + "/" + day + "/" + year);
-    else return (day + "/" + month + "/" + year);
+    else return (day + "." + month + "." + year);
   }
 
 })
