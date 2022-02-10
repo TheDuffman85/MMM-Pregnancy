@@ -14,7 +14,7 @@ cd ~/MagicMirror/modules
 
 Clone this repository:
 ````
-git clone https://github.com/bibaldo/MMM-Pregnancy.git
+git clone https://github.com/TheDuffman85/MMM-Pregnancy.git
 ````
 
 Add the module to the modules array in the `config/config.js` file:
