@@ -32,7 +32,7 @@ Module.register("MMM-Pregnancy", {
       en: "translations/en.json",
       es: "translations/es.json",
       sv: "translations/sv.json",
-	  de: "translations/de.json",
+	    de: "translations/de.json",
     }
   },
 
