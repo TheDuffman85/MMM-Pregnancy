@@ -242,9 +242,9 @@ Module.register("MMM-Pregnancy", {
 	
     this.pregnancyResults.duedate = this.dispDate(duedate);
 
-    var fetalage = 13 + 266 - ((duedate - today) / 86400000);
+    var fetalage = 14 + 266 - ((duedate - today) / 86400000);
     weeks = parseInt(fetalage / 7);
-    days = Math.ceil(fetalage % 7);
+    days = Math.ceil(fetalage % 7) - 1;
 
     this.pregnancyResults.fetalage.weeks = weeks;
     this.pregnancyResults.fetalage.days = days;
