@@ -35,6 +35,7 @@ The following properties can be configured:
 | `date`                       | Last menstrual period (LMP) <br> **Format:** `format MM/DD/YYYY`
 | `showConceptionDate`         | Show or not the conception date <br><br>**Default value:** `false`
 | `USDateFormat`               | Show dates with US date format `MM/DD/YYYY` <br><br>**Default value:** `false`
+| `daysStartWithZero`               | Start days with zero instead of one <br><br>**Default value:** `true`
 
 ## Config Example
 
