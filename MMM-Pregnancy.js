@@ -20,7 +20,8 @@ Module.register("MMM-Pregnancy", {
     header: 'Pregnancy',
     date: '01/31/2020', // format MM/DD/YYYY
     USDateFormat: false,
-    showConceptionDate: false
+    showConceptionDate: false,
+    daysStartWithZero: true
   },
 
   getStyles: function() {
@@ -244,7 +245,11 @@ Module.register("MMM-Pregnancy", {
 
     var fetalage = 14 + 266 - ((duedate - today) / 86400000);
     weeks = parseInt(fetalage / 7);
-    days = Math.ceil(fetalage % 7) - 1;
+    days = Math.ceil(fetalage % 7);
+
+    if (this.config.daysStartWithZero) {
+      --days;
+    }
 
     this.pregnancyResults.fetalage.weeks = weeks;
     this.pregnancyResults.fetalage.days = days;
