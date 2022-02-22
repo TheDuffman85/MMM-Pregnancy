@@ -39,9 +39,7 @@ Module.register("MMM-Pregnancy", {
 
   start: function() {
     Log.info("Starting module: " + this.name);
-    
-    this.pregnancyCalc();
-    
+        
     // Schedule update interval every hour
     var self = this;
     setInterval(function() {
@@ -55,6 +53,8 @@ Module.register("MMM-Pregnancy", {
 
   getDom: function() {
     var moduleWrapper = document.createElement("div");
+
+    this.pregnancyCalc();
     
     moduleWrapper.appendChild(this.getPregnancyInfo());
     if (this.config.showConceptionDate) {
